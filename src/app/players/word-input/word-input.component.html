@@ -1,0 +1,89 @@
+<div class="row">
+  <!-- <div class="col-8">
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c1"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()" width="25px">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c2"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()" width="25px">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1" [(ngModel)]="c3"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()" width="25px">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c4"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()" width="25px">
+    </span>
+  </div> -->
+  <div class="col-8">
+    <span class="input-char">
+      <div class="input-holder" (click)="setHolderValue($event, 0)"></div>
+    </span>
+    <span class="input-char">
+      <div class="input-holder" (click)="setHolderValue($event, 1)"></div>
+    </span>
+    <span class="input-char">
+      <div class="input-holder" (click)="setHolderValue($event, 2)"></div>
+    </span>
+    <span class="input-char">
+      <div class="input-holder" (click)="setHolderValue($event, 3)"></div>
+    </span>
+  </div>
+  <div class="col-4">
+    <!-- <mat-icon *ngIf="validWord; else inCorrect" class="mat-icon-rtl-mirror" svgIcon="check_circle"></mat-icon> -->
+    <svg *ngIf="validWord; else inCorrect" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+    class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+    <path
+    d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+  </svg>
+  <ng-template #inCorrect>
+    <svg *ngIf="validWord===false" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+      class="bi bi-x-circle" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path
+        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+    </svg>
+  </ng-template>
+  </div>
+</div>
+<!-- 
+<div class="input-card">
+  <span class="input-item">-->
+    <!-- <input type="text" class="form-control" id="selectedWord" aria-describedby="wordHelp"
+  required maxLength="1" minLength="1" pattern="[A-Za-z]{4}" oninput="this.value = this.value.toUpperCase()">
+  <div id="wordHelp" class="form-text">Expects non-repeative 4 letter word, for example WORD</div> 
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c1"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c2"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1" [(ngModel)]="c3"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()">
+    </span>
+    <span class="input-char">
+      <input type="text" maxLength="1" minLength="1" pattern="[A-Za-z]{1}" [(ngModel)]="c4"
+        oninput="this.value = this.value.toUpperCase()" (ngModelChange)="validateInput()">
+    </span>
+  </span>
+  <span>
+  <svg *ngIf="validChar===true" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+    class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+    <path
+      d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+  </svg>
+  <svg *ngIf="validChar===false" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+    class="bi bi-x-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+    <path
+      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+  </svg>
+</span>
+</div> -->

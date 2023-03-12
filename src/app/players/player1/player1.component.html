@@ -1,0 +1,62 @@
+<!-- <ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-lable>Enter a word 4 {{player2}}</ion-lable>
+    </ion-item>
+    <ion-item>
+      <app-wordinput (valueChange)='updateMyWord($event)'></app-wordinput>
+    </ion-item>
+    <ion-item>
+      <ion-lable> Timer : </ion-lable>
+      <div style="padding: 5px;">
+        <input style="width: 25px; padding: 1px; border-width: 2px; border-style: ridge;"type="number"
+        maxLength="2" minLength="1" pattern="[0-9]{2}" min="0" max="30" [(ngModel)]="timer">
+      </div>
+      <ion-lable> mins </ion-lable>
+    </ion-item>
+  </ion-card>
+</ion-content> -->
+<mat-card>
+  <mat-card-title class="card-header">
+    <p class="card-text"> Hey {{player1}}!!!</p>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <label class="form-label">Please enter a word for {{player2}}</label>
+  </mat-card-subtitle>
+</mat-card>
+<mat-card-content>
+  <div class="card-body">
+    <form>
+      <div class="mb-3">
+        <!-- <input type="text" class="form-control" id="selectedWord" aria-describedby="wordHelp"
+        required maxLength="4" minLength="4" pattern="[A-Za-z]{4}" oninput="this.value = this.value.toUpperCase()">
+        <div id="wordHelp" class="form-text">Expects non-repeative 4 letter word, for example WORD</div> -->
+
+        <app-word-input class="form-control" [inputValue]="letterPadValue" (inputValueChanged)="clearLetterPadValue()" (valueChange)='updateMyWord($event)'></app-word-input>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-stopwatch-fill" viewBox="0 0 16 16">
+              <path
+                d="M6.5 0a.5.5 0 0 0 0 1H7v1.07A7.001 7.001 0 0 0 8 16a7 7 0 0 0 5.29-11.584.531.531 0 0 0 .013-.012l.354-.354.353.354a.5.5 0 1 0 .707-.707l-1.414-1.415a.5.5 0 1 0-.707.707l.354.354-.354.354a.717.717 0 0 0-.012.012A6.973 6.973 0 0 0 9 2.071V1h.5a.5.5 0 0 0 0-1h-3zm2 5.6V9a.5.5 0 0 1-.5.5H4.5a.5.5 0 0 1 0-1h3V5.6a.5.5 0 1 1 1 0z" />
+            </svg>
+          </span>
+          <input [(ngModel)]="timer" type="text" class="form-control" [placeholder]="timer" aria-label="Username"
+            name="time" aria-describedby="basic-addon1" type="number" maxLength="2" minLength="1" pattern="[0-9]{2}"
+            min="0" max="30">
+          <span class="input-group-text" id="basic-addon2">mins</span>
+        </div>
+      </div>
+      <button *ngIf="myWord !== undefined" [routerLink]="'player2'"
+        [queryParams]="{player1: player1Name, player2: player2Name, word: myWord, time: timer}" type="submit"
+        class="btn btn-primary">Done</button>
+    </form>
+  </div>
+</mat-card-content>
+
+<mat-card-footer>
+  <div class="card-body">
+    <app-letter-pad [selectedValue]="letterPadValue"(value)='getValueFromLetterPad($event)'></app-letter-pad>
+  </div>
+
+</mat-card-footer>

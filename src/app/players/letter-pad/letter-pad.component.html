@@ -1,0 +1,36 @@
+<!-- <p>
+  letter-pad works!
+</p> -->
+<div class="outerContainer">
+  <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="space-around center" class="container-ctrl">
+    <div class="green" (click)="selectGreen()">
+      
+    </div>
+    <div class="red" (click)="selectRed()">
+    </div>
+    <div [class.erase]="!erase" [class.erase-selected]="erase" (click)="toggleErase()">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-eraser-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z" />
+      </svg> -->
+      <img width="32" height="32" src="/assets/svg/eraser-fill.svg"/>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="3px" class="container">
+    <ng-container *ngFor="let alphabet of alphabets.slice(0,13); index as i">
+      <div [class.disabled]="wasClicked(i)" class="col" (click)="onClick($event)">
+        {{alphabet}}
+      </div>
+    </ng-container>
+  </div>
+  <div fxLayout="row" fxLayoutGap="3px" class="container">
+    <ng-container *ngFor="let alphabet of alphabets.slice(13,26); index as i">
+      <div [class.disabled]="wasClicked(i+13)" class="col" (click)="onClick($event)">
+        {{alphabet}}
+      </div>
+    </ng-container>
+  </div>
+  <!-- <div class="row">
+  </div> -->
+</div>

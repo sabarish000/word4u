@@ -1,0 +1,37 @@
+.input-card{
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+.col-8{
+    display: flex;
+    width: 85%;
+    /*background-color: beige;*/
+  }
+.col-4{
+  width:15%;
+  padding-top:10px;
+}
+.input-char{
+    display: flex;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+  input{
+    width: 40%;
+    border-width: 2px;
+    border-color: #009fe3;
+    text-align: center
+  }
+
+  .input-holder {
+    height: 25px;
+    width: 25px;
+    background-color: #e9ecef;
+    margin-right: 0px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    text-align: center
+  }

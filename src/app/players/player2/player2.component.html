@@ -1,0 +1,50 @@
+<!-- <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+  <table class="table-primary">
+    <thead>
+      <tr>
+        <th scope="col"><span>
+          <p>Guess the word & Time left is <span style="font-size:medium; color: orangered;">[{{timeInText}}]</span></p>
+        </span></th>
+      </tr>
+    </thead>
+    <tr class="table-success">...</tr>
+    <table class="table-danger">...</table>
+  </table>
+</div> -->
+<!-- <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0"> -->
+<div class="container">
+  <table class="table">
+    <thead position= "fixed">
+      <tr>
+        <th scope="col" colspan="2"><span>
+          <p>Guess the word & Time left is <span style="font-size:medium; color: orangered;">[{{timeInText}}]</span></p>
+        </span></th>
+      </tr>
+      <tr>
+        <th scope="col" colspan="2">
+          <app-letter-pad [selectedValue]="letterPadValue"(value)='getValueFromLetterPad($event)'></app-letter-pad>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="col" *ngFor="let answer of answerLines">
+        <td [class]="answer.isMatched ? 'table-success' : 'table-danger'">{{answer.word}}</td>
+        <td [class]="answer.isMatched ? 'table-success' : 'table-danger'" width="41px">{{answer.matchCount}}</td>
+      </tr>
+      <tr class="table-primary" *ngIf="!correctGuess && timeInText != '00:00'">
+        <td class="table-primary">
+          <app-word-input [inputValue]="letterPadValue" (inputValueChanged)="clearLetterPadValue()" (valueChange)='updateMyWord($event)'></app-word-input>
+        </td>
+        <td class="table-primary" width="41px">
+          <div style="padding-top: 10px;">
+            <svg *ngIf="this.guessWord" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+              class="bi bi-arrow-right-circle" viewBox="0 0 16 16" (click)='checkGuess()'>
+              <path fill-rule="evenodd"
+                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+            </svg>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
