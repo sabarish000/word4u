@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <th scope="col" colspan="2">
-          <app-letter-pad [selectedValue]="letterPadValue"(value)='getValueFromLetterPad($event)'></app-letter-pad>
+          <app-letter-pad [isForGuessing]="isGuessing"  (value)='getValueFromLetterPad($event)'></app-letter-pad>
         </th>
       </tr>
     </thead>

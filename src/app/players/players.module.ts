@@ -9,10 +9,11 @@ import { RouterModule } from '@angular/router';
 import { LetterPadComponent } from './letter-pad/letter-pad.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule, MatIconModule } from '@angular/material';
+import { CharInputComponent } from './word-input/char-input/char-input.component';
 
 
 @NgModule({
-  declarations: [Player1Component, Player2Component, WordInputComponent, LetterPadComponent],
+  declarations: [Player1Component, Player2Component, WordInputComponent, LetterPadComponent, CharInputComponent],
   exports: [Player1Component, Player2Component,WordInputComponent],
   imports: [
     CommonModule,FormsModule, RouterModule, FlexLayoutModule, MatCardModule, MatIconModule

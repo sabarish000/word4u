@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-word-input',
@@ -7,17 +6,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./word-input.component.css']
 })
 export class WordInputComponent implements OnInit{
-  // private c1: string = '';
-  // private c2: string = '';
-  // private c3: string = '';
-  // private c4: string = '';
-  // private regExp: RegExp = new RegExp('^[A-Za-z]{1}');
-
-  public word = new Array<string>(4);
+  public word = ['','','',''];
   public hasRepeatedChars: boolean = false;
-  private eventsSubscription: Subscription;
-  public validChar: boolean = true;
   public validWord: boolean = false;
+  private eraseON = false;
   private wordLength = 0;
   @Input() inputValue: string;
   @Output() inputValueChanged = new EventEmitter();
@@ -37,23 +29,24 @@ export class WordInputComponent implements OnInit{
     this.validWord ? this.valueChange.emit(this.word.join('')) : this.valueChange.emit(undefined);
   }
 
-  // private hasRepeatedChar(): boolean {
-  //   var isRepeated = this.c1.length === 1 && this.c2.length === 1 ? this.c1 === this.c2 : false;
-  //   isRepeated = isRepeated || (this.c1.length === 1 && this.c3.length === 1 ? this.c1 === this.c3 : false);
-  //   isRepeated = isRepeated || (this.c1.length === 1 && this.c4.length === 1 ? this.c1 === this.c4 : false);
-  //   isRepeated = isRepeated || (this.c2.length === 1 && this.c3.length === 1 ? this.c2 === this.c3 : false);
-  //   isRepeated = isRepeated || (this.c2.length === 1 && this.c4.length === 1 ? this.c2 === this.c4 : false);
-  //   isRepeated = isRepeated || (this.c3.length === 1 && this.c4.length === 1 ? this.c3 === this.c4 : false);
-  //   return isRepeated;
-  // }
-
   setHolderValue($event, index: number){
     console.log("In setHolderValue", this.inputValue, index);
-    if(this.inputValue){
+    if(this.eraseON) {
+      $event.target.innerText = '';
+      this.updateWord('', index);
+      if(this.word.join('') === '') {
+        this.toggleErase();
+      }
+    } else if(this.inputValue){
       $event.target.innerText = this.inputValue;
       this.updateWord(this.inputValue, index);
       console.log("In setHolderValue", $event.target.innerText);
       this.inputValueChanged.emit(true);
     }
+  }
+
+  toggleErase(){
+    this.eraseON = !this.eraseON;
+    console.log("erase toggled", this.eraseON);
   }
 }

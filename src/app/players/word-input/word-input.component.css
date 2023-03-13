@@ -5,11 +5,11 @@
 }
 .col-8{
     display: flex;
-    width: 85%;
+    width: 80%;
     /*background-color: beige;*/
   }
 .col-4{
-  width:15%;
+  width:10%;
   padding-top:10px;
 }
 .input-char{
@@ -34,4 +34,17 @@
     border: 1px solid #ced4da;
     border-radius: .25rem;
     text-align: center
+  }
+
+  .erase{
+    height: 25px;
+    width: 25px;
+    background-color:     #ffffff;
+    margin-right: 0px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    text-align: center
+  }
+  .erase-selected{
+    background-color:     #a9e5f5;
   }

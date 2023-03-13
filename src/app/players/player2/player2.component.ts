@@ -20,6 +20,7 @@ export class Player2Component implements OnInit {
   private timeInterval: number = 2;
   private MIN = 60;
   letterPadValue: string;
+  public isGuessing = true;
   // public classGroup = {
   //   'table-success' : this.answer.isMatched
   // }
@@ -70,7 +71,7 @@ export class Player2Component implements OnInit {
     } else {
       var index = this.answerLines.length + 1;
       this.answerLines.push(new GuessModel(index, this.guessWord, this.commonService.getMatchedCount(this.actualWord,this.guessWord), this.guessWord === this.actualWord));
-      this.guessWord = undefined;
+      // this.guessWord = undefined;
       console.log("GuessWord list", this.answerLines);
     }
   }
